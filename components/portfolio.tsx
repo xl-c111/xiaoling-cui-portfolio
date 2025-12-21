@@ -22,7 +22,7 @@ const projects = [
       "Full-stack Airbnb clone featuring instant booking, payment processing, and comprehensive host analytics.",
     image: "/hbnb.webp",
     tags: ["React", "Flask", "Tailwind CSS", "MySQL", "AWS", "Stripe"],
-    liveDemo: "https://d2gfqpg21nkiyl.cloudfront.net/",
+    liveDemo: "https://hbnb-luxeairbnbclone.vercel.app/",
     github: "https://github.com/xl-c111/holbertonschool-hbnb",
   },
   {
@@ -288,9 +288,7 @@ export function Portfolio() {
                       className="w-24 h-24 flex items-center justify-center"
                       dangerouslySetInnerHTML={{ __html: tech.svg }}
                     />
-                    <span className="text-sm font-semibold text-center text-foreground">
-                      {tech.name}
-                    </span>
+                    <span className="text-sm font-semibold text-center text-foreground">{tech.name}</span>
                   </CardContent>
                 </Card>
               </motion.div>
