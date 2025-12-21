@@ -27,8 +27,9 @@ const projects = [
   },
   {
     slug: "flora",
-    title: "Flora",
-    description: "Full-stack flower marketplace with AI gift messages, subscriptions, and Stripe checkout.",
+    title: "Flora - Ecommerce Flower Marketplace",
+    description:
+      "Full-stack app with Auth0, Stripe checkout, AI gift messages, subscriptions, and email notifications.",
     image: "/flora.webp",
     tags: ["React", "TypeScript", "Express", "Auth0", "Prisma", "Gemini AI"],
     liveDemo: "https://dzmu16crq41il.cloudfront.net/",
@@ -36,9 +37,9 @@ const projects = [
   },
   {
     slug: "been-there",
-    title: "been there - Peer Support Platform",
+    title: "Been There - AI-Powered Peer Support Platform",
     description:
-      "AI-powered platform connecting people to authentic recovery stories through semantic matching, combating online radicalization with compassionate peer perspectives.",
+      "AAI platform using semantic matching to counter online radicalization through authentic recovery stories.",
     image: "/beenthere.webp",
     tags: ["Next.js 16", "Vercel", "HF Space", "Supabase", "Gemini 2.0"],
     liveDemo: "https://needleinthehashtaghackathon.vercel.app",
@@ -61,6 +62,22 @@ const certificates = [
     image: "/ai-engineer-certificate.webp",
     description:
       "Foundational certification covering AI theory, LLM concepts, prompt engineering, AI governance, and building complex AI systems with Python.",
+  },
+  {
+    title: "Understanding Cloud Computing",
+    issuer: "DataCamp",
+    date: "December 2025",
+    image: "/understanding_cloud_computing.webp",
+    description:
+      "Learned core cloud concepts, service and deployment models, and how AWS, Azure, and Google Cloud enable scalable, reliable, and cost-effective systems.",
+  },
+  {
+    title: "Working with the OpenAI API",
+    issuer: "DataCamp",
+    date: "December 2025",
+    image: "/working_with_the_openai_api.webp",
+    description:
+      "learned to use Python to access OpenAI models for text generation, sentiment analysis, classification, and building conversational AI applications.",
   },
 ];
 
@@ -198,7 +215,7 @@ export function Portfolio() {
             {projects.map((project, index) => (
               <motion.div key={index} variants={staggerItem}>
                 <TiltCard className="h-full">
-                  <Card className="gradient-border bg-card/50 backdrop-blur-sm overflow-hidden group hover:glow-sage transition-all duration-300 h-full">
+                  <Card className="gradient-border bg-card/50 backdrop-blur-sm overflow-hidden group hover:glow-sage transition-all duration-300 flex flex-col h-[680px]">
                     <Link
                       href={`/project/${project.slug}`}
                       prefetch={false}
@@ -300,43 +317,27 @@ export function Portfolio() {
             {certificates.map((cert, index) => (
               <motion.div key={index} variants={staggerItem}>
                 <TiltCard className="h-full">
-                  <Card className="gradient-border bg-card/50 backdrop-blur-sm overflow-hidden group hover:glow-sage transition-all duration-300 h-full">
-                    {/* Conditional styling based on certificate */}
-                    {cert.title === "AI Engineer For Developers Associate" ? (
-                      <div className="relative aspect-3/2 overflow-hidden bg-white">
-                        {/* AI Engineer Certificate - Cropped */}
-                        <Image
-                          src={getImagePath(cert.image || "/placeholder.svg")}
-                          alt={`${cert.title} Certificate`}
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                          className="object-cover object-center p-2 group-hover:scale-105 transition-transform duration-300 will-change-transform"
-                        />
-                        {/* Colored accent bar */}
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#43766C] via-[#B19470] to-[#43766C] z-20" />
-                      </div>
-                    ) : (
-                      <div className="relative aspect-4/3 overflow-hidden bg-gradient-to-br from-[#43766C]/20 to-[#B19470]/20">
-                        {/* Other Certificates - Original Layout */}
-                        <Image
-                          src={getImagePath(cert.image || "/placeholder.svg")}
-                          alt={`${cert.title} Certificate`}
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                          className="object-contain bg-white p-4 group-hover:scale-105 transition-transform duration-300 will-change-transform"
-                        />
-                        {/* Colored accent bar */}
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#43766C] via-[#B19470] to-[#43766C] z-20" />
-                      </div>
-                    )}
-                    <CardContent className="pt-6 px-4 sm:px-6">
+                  <Card className="gradient-border bg-card/50 backdrop-blur-sm overflow-hidden group hover:glow-sage transition-all duration-300 flex flex-col h-[620px]">
+                    {/* Fixed height for all certificates */}
+                    <div className="relative w-full h-[280px] overflow-hidden bg-white shrink-0">
+                      <Image
+                        src={getImagePath(cert.image || "/placeholder.svg")}
+                        alt={`${cert.title} Certificate`}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-contain object-center p-2 group-hover:scale-105 transition-transform duration-300 will-change-transform"
+                      />
+                      {/* Colored accent bar */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#43766C] via-[#B19470] to-[#43766C] z-20" />
+                    </div>
+                    <CardContent className="pt-6 px-4 sm:px-6 flex-1 flex flex-col">
                       <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground">{cert.title}</h3>
                       <div className="flex items-center gap-2 mb-3">
                         <Award className="h-4 w-4 text-[#43766C]" />
                         <p className="text-sm sm:text-base font-semibold text-[#43766C]">{cert.issuer}</p>
                       </div>
                       <p className="text-xs sm:text-sm text-muted-foreground mb-4">{cert.date}</p>
-                      <p className="text-sm sm:text-base text-muted-foreground">{cert.description}</p>
+                      <p className="text-sm sm:text-base text-muted-foreground flex-1">{cert.description}</p>
                     </CardContent>
                   </Card>
                 </TiltCard>

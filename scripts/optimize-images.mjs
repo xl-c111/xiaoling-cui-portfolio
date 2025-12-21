@@ -1,6 +1,7 @@
 import sharp from 'sharp';
-import { readdir } from 'fs/promises';
+import { readdir, stat, readFile, writeFile } from 'fs/promises';
 import { join } from 'path';
+import { pdf } from 'pdf-to-img';
 
 const publicDir = 'public';
 const imagesToOptimize = [
@@ -11,6 +12,11 @@ const imagesToOptimize = [
   'flora.jpg',
   'hero.jpg',
   'beenthere.png'
+];
+
+const pdfsToOptimize = [
+  'understand_cloud_computing.pdf',
+  'working_with_the_openai_api.pdf'
 ];
 
 async function optimizeImages() {
@@ -40,4 +46,49 @@ async function optimizeImages() {
   console.log('✨ Image optimization complete!');
 }
 
-optimizeImages();
+async function optimizePDFs() {
+  console.log('📄 Starting PDF to WebP conversion...\n');
+
+  for (const pdfFile of pdfsToOptimize) {
+    const inputPath = join(publicDir, pdfFile);
+    const outputPath = join(publicDir, pdfFile.replace('.pdf', '.webp'));
+
+    try {
+      const inputStats = await stat(inputPath);
+      const inputSize = inputStats.size;
+
+      // Convert PDF to image
+      const document = await pdf(inputPath, { scale: 3 });
+
+      // Get first page only (certificates are single-page)
+      const page = await document.getPage(1);
+
+      // Convert to WebP using sharp
+      const webpBuffer = await sharp(page)
+        .webp({ quality: 85, effort: 6 })
+        .toBuffer();
+
+      // Save WebP file
+      await writeFile(outputPath, webpBuffer);
+
+      const outputSize = webpBuffer.length;
+      const savings = ((1 - outputSize / inputSize) * 100).toFixed(1);
+
+      console.log(`✅ ${pdfFile}`);
+      console.log(`   → ${outputPath}`);
+      console.log(`   → Size: ${(outputSize / 1024).toFixed(0)}KB (${savings}% smaller than PDF)\n`);
+    } catch (error) {
+      console.error(`❌ Error processing ${pdfFile}:`, error.message);
+    }
+  }
+
+  console.log('✨ PDF conversion complete!');
+}
+
+async function optimizeAll() {
+  await optimizeImages();
+  console.log('');
+  await optimizePDFs();
+}
+
+optimizeAll();
