@@ -78,7 +78,7 @@ const projects = {
     image: "/hbnb.webp",
     technologies: ["Python", "Flask", "React", "Tailwind CSS", "MySQL", "Stripe API", "AWS"],
     github: "https://github.com/xl-c111/holbertonschool-hbnb",
-    demo: "https://d2gfqpg21nkiyl.cloudfront.net/",
+    demo: "https://hbnb-luxeairbnbclone.vercel.app/",
     features: [
       "💳 Stripe Payment Intents API with secure server-side verification and custom checkout flow",
       "☁️ AWS deployment with S3/CloudFront frontend and EC2 backend infrastructure",
