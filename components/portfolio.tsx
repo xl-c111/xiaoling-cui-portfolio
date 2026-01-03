@@ -19,9 +19,9 @@ const projects = [
     slug: "hbnb-luxe-airbnb-clone",
     title: "HBnB - Luxe Airbnb Clone",
     description:
-      "Full-stack Airbnb clone featuring instant booking, payment processing, and comprehensive host analytics.",
+      "Portfolio-grade, full-stack Airbnb-style marketplace with Stripe payments, JWT auth, and host/guest flows.",
     image: "/hbnb.webp",
-    tags: ["React", "Flask", "Tailwind CSS", "MySQL", "AWS", "Stripe"],
+    tags: ["React 19", "Flask", "Tailwind CSS", "TiDB", "Stripe", "JWT"],
     liveDemo: "https://hbnb-luxeairbnbclone.vercel.app/",
     github: "https://github.com/xl-c111/holbertonschool-hbnb",
   },
@@ -39,7 +39,7 @@ const projects = [
     slug: "been-there",
     title: "Been There - AI-Powered Peer Support Platform",
     description:
-      "AAI platform using semantic matching to counter online radicalization through authentic recovery stories.",
+      "An AI platform using semantic matching to counter online radicalization through authentic recovery stories.",
     image: "/beenthere.webp",
     tags: ["Next.js 16", "Vercel", "HF Space", "Supabase", "Gemini 2.0"],
     liveDemo: "https://needleinthehashtaghackathon.vercel.app",
