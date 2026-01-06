@@ -1,9 +1,12 @@
 import { Portfolio } from '@/components/portfolio'
+import { Suspense } from 'react'
 
 export default function PortfolioPage() {
   return (
     <main className="min-h-screen pt-16">
-      <Portfolio />
+      <Suspense fallback={null}>
+        <Portfolio />
+      </Suspense>
     </main>
   )
 }

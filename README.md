@@ -37,13 +37,13 @@ npm run dev
 
 ## Scripts
 ```bash
-pnpm dev         # Start dev server
-pnpm build       # Build for production
-pnpm start       # Start production server
-pnpm lint        # Lint
-pnpm optimize-images  # Optimize images in public/
-pnpm preview     # Vercel preview deploy
-pnpm deploy      # Vercel production deploy
+pnpm dev                  # Start dev server
+pnpm build                # Build for production
+pnpm start                # Start production server
+pnpm lint                 # Lint
+pnpm optimize-images       # Optimize images in public/
+pnpm run preview          # Vercel preview deploy
+pnpm run deploy           # Vercel production deploy
 ```
 
 ## Project Structure
