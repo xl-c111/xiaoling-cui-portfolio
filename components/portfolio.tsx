@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Code, Award, Boxes, ExternalLink, Github, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { FadeIn, StaggerContainer, staggerItem } from "@/components/animations";
 import { TiltCard } from "@/components/tilt-card";
 import { motion } from "framer-motion";
@@ -154,6 +155,14 @@ const techStack = [
 
 export function Portfolio() {
   const [activeTab, setActiveTab] = useState<Tab>("projects");
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab === "projects" || tab === "techstack" || tab === "certificates") {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
 
   return (
     <section id="portfolio" className="px-6 sm:px-6 lg:px-8 py-16 sm:py-20">
@@ -172,40 +181,42 @@ export function Portfolio() {
 
         <FadeIn delay={0.3}>
           <div className="flex justify-center mb-12">
-            <div className="inline-flex rounded-2xl p-1 bg-card/50 backdrop-blur-sm border border-border gap-0.5 sm:gap-1">
+            <div className="w-full max-w-4xl rounded-2xl p-2 bg-card/40 backdrop-blur-sm border border-border/70">
+              <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => setActiveTab("projects")}
-                className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-6 md:px-8 py-2 sm:py-4 rounded-xl transition-all duration-200 ${
+                className={`relative flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-6 md:px-8 py-2.5 sm:py-3.5 rounded-2xl border transition-all duration-200 ${
                   activeTab === "projects"
-                    ? "bg-[#43766C]/20 text-foreground shadow-lg"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-[#43766C]/30 text-[#2C5A52] border-[#43766C]/70 shadow-lg shadow-[#43766C]/25"
+                    : "bg-card/60 text-foreground/70 border-border/60 hover:bg-card/80 hover:text-foreground hover:border-[#43766C]/40"
                 }`}
               >
-                <Code className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="font-semibold text-xs sm:text-base">Projects</span>
+                <Code className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span className="font-semibold text-sm sm:text-base">Projects</span>
               </button>
               <button
                 onClick={() => setActiveTab("techstack")}
-                className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-6 md:px-8 py-2 sm:py-4 rounded-xl transition-all duration-200 ${
+                className={`relative flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-6 md:px-8 py-2.5 sm:py-3.5 rounded-2xl border transition-all duration-200 ${
                   activeTab === "techstack"
-                    ? "bg-[#B19470]/20 text-foreground shadow-lg"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-[#B19470]/35 text-[#7A5B36] border-[#B19470]/70 shadow-lg shadow-[#B19470]/25"
+                    : "bg-card/60 text-foreground/70 border-border/60 hover:bg-card/80 hover:text-foreground hover:border-[#B19470]/40"
                 }`}
               >
-                <Boxes className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="font-semibold text-xs sm:text-base">Tech Stack</span>
+                <Boxes className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span className="font-semibold text-sm sm:text-base">Tech Stack</span>
               </button>
               <button
                 onClick={() => setActiveTab("certificates")}
-                className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-6 md:px-8 py-2 sm:py-4 rounded-xl transition-all duration-200 ${
+                className={`relative flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-6 md:px-8 py-2.5 sm:py-3.5 rounded-2xl border transition-all duration-200 ${
                   activeTab === "certificates"
-                    ? "bg-[#43766C]/20 text-foreground shadow-lg"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-[#43766C]/30 text-[#2C5A52] border-[#43766C]/70 shadow-lg shadow-[#43766C]/25"
+                    : "bg-card/60 text-foreground/70 border-border/60 hover:bg-card/80 hover:text-foreground hover:border-[#43766C]/40"
                 }`}
               >
-                <Award className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="font-semibold text-xs sm:text-base">Certificates</span>
+                <Award className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span className="font-semibold text-sm sm:text-base">Certificates</span>
               </button>
+            </div>
             </div>
           </div>
         </FadeIn>

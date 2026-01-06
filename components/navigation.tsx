@@ -143,6 +143,14 @@ export const Navigation = memo(function Navigation() {
     [pathname, router, scrollWithinPage]
   );
 
+  const navigateToPortfolioTab = useCallback(
+    (tab: "projects" | "techstack" | "certificates") => {
+      router.push(`/portfolio?tab=${tab}`);
+      setIsMobileMenuOpen(false);
+    },
+    [router]
+  );
+
   // Handle hash navigation when landing on page with hash
   useEffect(() => {
     if (pathname === "/" && window.location.hash) {
@@ -182,28 +190,108 @@ export const Navigation = memo(function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {[
-              { id: "hero", label: "Home" },
-              { id: "about", label: "About" },
-              { id: "portfolio", label: "Portfolio" },
-              { id: "experience", label: "Experience" },
-              { id: "education", label: "Education" },
-              { id: "additional", label: "Additional" },
-              { id: "contact", label: "Contact" },
-            ].map((item) => (
+            <button
+              onClick={() => scrollToSection("hero")}
+              className={`text-base font-semibold transition-all cursor-pointer relative ${
+                activeSection === "hero" ? "text-[#c5dcd5] font-semibold" : "text-[#7fa99a] hover:text-[#F8FAE5]"
+              }`}
+            >
+              Home
+              {activeSection === "hero" && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c5dcd5] rounded-full" />
+              )}
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className={`text-base font-semibold transition-all cursor-pointer relative ${
+                activeSection === "about" ? "text-[#c5dcd5] font-semibold" : "text-[#7fa99a] hover:text-[#F8FAE5]"
+              }`}
+            >
+              About
+              {activeSection === "about" && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c5dcd5] rounded-full" />
+              )}
+            </button>
+            <div className="relative group pb-3 -mb-3">
               <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => scrollToSection("portfolio")}
                 className={`text-base font-semibold transition-all cursor-pointer relative ${
-                  activeSection === item.id ? "text-[#c5dcd5] font-semibold" : "text-[#7fa99a] hover:text-[#F8FAE5]"
+                  activeSection === "portfolio"
+                    ? "text-[#c5dcd5] font-semibold"
+                    : "text-[#7fa99a] hover:text-[#F8FAE5]"
                 }`}
               >
-                {item.label}
-                {activeSection === item.id && (
+                Portfolio
+                {activeSection === "portfolio" && (
                   <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c5dcd5] rounded-full" />
                 )}
               </button>
-            ))}
+              <span className="absolute left-1/2 top-full h-3 w-[7.5rem] -translate-x-1/2 pointer-events-auto" />
+              <div className="absolute left-1/2 top-full z-50 mt-2 w-[7.5rem] -translate-x-1/2 rounded-xl border border-[#43766C]/40 bg-[#203d36] p-2 shadow-lg shadow-black/20 opacity-0 translate-y-1 pointer-events-none transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+                <button
+                  onClick={() => navigateToPortfolioTab("projects")}
+                  className="w-full rounded-lg px-3 py-2 text-left text-sm font-semibold text-[#c5dcd5] hover:bg-[#2d4f47]/70 hover:text-[#F8FAE5] transition-colors"
+                >
+                  Projects
+                </button>
+                <button
+                  onClick={() => navigateToPortfolioTab("techstack")}
+                  className="w-full rounded-lg px-3 py-2 text-left text-sm font-semibold text-[#c5dcd5] hover:bg-[#2d4f47]/70 hover:text-[#F8FAE5] transition-colors"
+                >
+                  Tech Stack
+                </button>
+                <button
+                  onClick={() => navigateToPortfolioTab("certificates")}
+                  className="w-full rounded-lg px-3 py-2 text-left text-sm font-semibold text-[#c5dcd5] hover:bg-[#2d4f47]/70 hover:text-[#F8FAE5] transition-colors"
+                >
+                  Certificates
+                </button>
+              </div>
+            </div>
+            <button
+              onClick={() => scrollToSection("experience")}
+              className={`text-base font-semibold transition-all cursor-pointer relative ${
+                activeSection === "experience" ? "text-[#c5dcd5] font-semibold" : "text-[#7fa99a] hover:text-[#F8FAE5]"
+              }`}
+            >
+              Experience
+              {activeSection === "experience" && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c5dcd5] rounded-full" />
+              )}
+            </button>
+            <button
+              onClick={() => scrollToSection("education")}
+              className={`text-base font-semibold transition-all cursor-pointer relative ${
+                activeSection === "education" ? "text-[#c5dcd5] font-semibold" : "text-[#7fa99a] hover:text-[#F8FAE5]"
+              }`}
+            >
+              Education
+              {activeSection === "education" && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c5dcd5] rounded-full" />
+              )}
+            </button>
+            <button
+              onClick={() => scrollToSection("additional")}
+              className={`text-base font-semibold transition-all cursor-pointer relative ${
+                activeSection === "additional" ? "text-[#c5dcd5] font-semibold" : "text-[#7fa99a] hover:text-[#F8FAE5]"
+              }`}
+            >
+              Additional
+              {activeSection === "additional" && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c5dcd5] rounded-full" />
+              )}
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className={`text-base font-semibold transition-all cursor-pointer relative ${
+                activeSection === "contact" ? "text-[#c5dcd5] font-semibold" : "text-[#7fa99a] hover:text-[#F8FAE5]"
+              }`}
+            >
+              Contact
+              {activeSection === "contact" && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#c5dcd5] rounded-full" />
+              )}
+            </button>
           </div>
 
           {/* Social Links */}

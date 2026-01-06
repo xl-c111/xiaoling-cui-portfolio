@@ -87,7 +87,7 @@ export function Hero() {
                 onClick={() => {
                   const element = document.getElementById("contact");
                   if (element) {
-                    const offset = 100;
+                    const offset = 64;
                     const elementPosition = element.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.scrollY - offset;
                     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
