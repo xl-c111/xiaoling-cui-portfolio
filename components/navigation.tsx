@@ -14,6 +14,13 @@ export const Navigation = memo(function Navigation() {
   const ticking = useRef(false);
   const sectionPositionsRef = useRef<Map<string, { top: number; bottom: number }>>(new Map());
 
+  const getNavHeight = useCallback(() => {
+    if (typeof window === "undefined") return 64;
+    const nav = document.querySelector<HTMLElement>("[data-site-nav]");
+    const height = nav?.getBoundingClientRect().height;
+    return Math.floor(height ?? 64);
+  }, []);
+
   // Cache section positions to avoid repeated DOM queries
   const cacheSectionPositions = useCallback(() => {
     const sections = ["hero", "about", "portfolio", "experience", "education", "additional", "contact"];
@@ -42,11 +49,8 @@ export const Navigation = memo(function Navigation() {
     const element = document.getElementById(sectionId);
     if (!element) return false;
 
-    const offset = 60;
-    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-    const targetPosition = Math.max(elementPosition - offset, 0);
-
-    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+    // `scroll-mt-*` on sections handles the fixed navbar offset.
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
     window.history.replaceState(null, "", `/#${sectionId}`);
     return true;
   }, []);
@@ -155,20 +159,39 @@ export const Navigation = memo(function Navigation() {
   useEffect(() => {
     if (pathname === "/" && window.location.hash) {
       const sectionId = window.location.hash.substring(1);
-      setTimeout(() => {
+      let isCancelled = false;
+      let attempts = 0;
+      const maxAttempts = 12;
+
+      const tryAlign = () => {
+        if (isCancelled) return;
+
         const element = document.getElementById(sectionId);
-        if (element) {
-          const offset = 60;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY - offset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth",
-          });
+        if (!element) {
+          attempts += 1;
+          if (attempts < maxAttempts) {
+            window.setTimeout(tryAlign, 80);
+          }
+          return;
         }
-      }, 100);
+
+        const navHeight = getNavHeight();
+        const delta = element.getBoundingClientRect().top - navHeight;
+        if (Math.abs(delta) > 2) {
+          element.scrollIntoView({ behavior: "auto", block: "start" });
+        }
+      };
+
+      requestAnimationFrame(tryAlign);
+
+      // Fonts loading can shift layout significantly on first load.
+      document.fonts?.ready.then(() => requestAnimationFrame(tryAlign)).catch(() => {});
+
+      return () => {
+        isCancelled = true;
+      };
     }
-  }, [pathname]);
+  }, [pathname, getNavHeight]);
 
   const isProjectDetailPage = pathname.startsWith("/project/");
 
@@ -178,7 +201,10 @@ export const Navigation = memo(function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full z-[100] bg-[#1f3a34]/98 backdrop-blur-md border-b border-[#43766C]/30 shadow-sm">
+    <nav
+      data-site-nav
+      className="fixed top-0 left-0 right-0 w-full z-[100] bg-[#1f3a34]/98 backdrop-blur-md border-b border-[#43766C]/30 shadow-sm"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <button

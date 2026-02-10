@@ -141,12 +141,6 @@
     transform: translateZ(0);
   }
 
-  /* Smooth opacity transitions */
-  .transition-opacity,
-  .transition-all {
-    will-change: opacity, transform;
-  }
-
   /* Optimize scrolling */
   * {
     -webkit-font-smoothing: antialiased;

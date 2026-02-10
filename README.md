@@ -1,41 +1,41 @@
 # Xiaoling Cui Portfolio Website
 
-Modern, performance-optimized personal portfolio built with Next.js and Tailwind CSS. The site showcases projects, experience, education, certifications, and contact details with a clean, responsive UI.
+Personal portfolio website built with Next.js (App Router), showcasing projects, experience, education, and contact details with a clean, responsive UI.
 
-Live Site: https://xiaoling-cui-portfolio.vercel.app/
+Live: https://xiaoling-cui-portfolio.vercel.app/
 
-## Features
-- Project portfolio with detailed project pages
-- Experience, education, and certifications sections
-- Optimized media assets for fast load times
-- Responsive layout across desktop and mobile
-- Vercel-ready deployment configuration
+## Highlights
+- Single-page section navigation + dedicated routes
+- Project portfolio with detail pages
+- Responsive design (desktop + mobile)
+- Optimized images (WebP) and performance-focused UI
 
 ## Tech Stack
-- Next.js 16 (App Router)
-- React 19
+- Next.js 16, React 19, TypeScript
 - Tailwind CSS 4
-- TypeScript
-- Radix UI + shadcn/ui components
+- Radix UI + shadcn/ui
 - Framer Motion
+- Vercel Analytics
 
-## Getting Started
-Recommended: use `pnpm` (the repo includes a `pnpm-lock.yaml`).
+## Local Development
+Recommended: use `pnpm` (the repo includes `pnpm-lock.yaml`).
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open `http://localhost:3000` to view the site.
+Open `http://localhost:3000`.
 
 If you prefer npm:
+
 ```bash
 npm install --legacy-peer-deps
 npm run dev
 ```
 
 ## Scripts
+
 ```bash
 pnpm dev                  # Start dev server
 pnpm build                # Build for production
@@ -47,11 +47,14 @@ pnpm run deploy           # Vercel production deploy
 ```
 
 ## Project Structure
-- `app/` Next.js routes and pages
-- `components/` UI and section components
+- `app/` Next.js routes, layout, globals
+- `components/` UI + page sections
 - `public/` static assets (images, PDFs)
 - `lib/` shared utilities
-- `hooks/` custom hooks
+- `scripts/` build utilities (e.g. image optimization)
 
 ## Deployment
 See `DEPLOYMENT.md` for Vercel deployment steps, optimization notes, and troubleshooting.
+
+## License
+This repository is provided for portfolio use. If you’d like to reuse parts of it, please reach out first.

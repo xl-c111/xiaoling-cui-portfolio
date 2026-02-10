@@ -54,7 +54,7 @@ const education = [
 
 export function Education() {
   return (
-    <section id="education" className="flex items-center justify-center px-6 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <section id="education" className="scroll-mt-16 flex items-center justify-center px-6 sm:px-6 lg:px-8 py-16 sm:py-20">
       <div className="max-w-5xl mx-auto w-full">
         <FadeIn>
           <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-center text-[#43766C]">Education</h2>

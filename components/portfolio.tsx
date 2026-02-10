@@ -165,7 +165,7 @@ export function Portfolio() {
   }, [searchParams]);
 
   return (
-    <section id="portfolio" className="px-6 sm:px-6 lg:px-8 py-16 sm:py-20">
+    <section id="portfolio" className="scroll-mt-16 px-6 sm:px-6 lg:px-8 py-16 sm:py-20">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-4">
