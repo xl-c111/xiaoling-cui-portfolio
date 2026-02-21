@@ -1,4 +1,4 @@
-import { Portfolio } from '@/components/portfolio'
+import { Portfolio } from '@/components/sections/portfolio'
 import { Suspense } from 'react'
 
 export default function PortfolioPage() {

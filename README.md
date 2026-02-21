@@ -61,10 +61,31 @@ pnpm run deploy           # Vercel production deploy
 
 ## Project Structure
 - `app/` Next.js routes, layout, globals
-- `components/` UI + page sections
+- `components/ui/` shared shadcn/ui primitives
+- `components/sections/` page section components
 - `public/` static assets (images, PDFs)
-- `lib/` shared utilities
-- `scripts/` build utilities (e.g. image optimization)
+- `lib/` shared utilities and structured data (`lib/data/projects.ts`)
+- `scripts/` build and smoke-test utilities
+- `tests/` reserved for broader automated test suites
+
+### Route Layout (App Router)
+```text
+app/
+  layout.tsx
+  globals.css
+  (public)/
+    page.tsx                 -> /
+    about/page.tsx           -> /about
+    portfolio/page.tsx       -> /portfolio
+    experience/page.tsx      -> /experience
+    education/page.tsx       -> /education
+    additional/page.tsx      -> /additional
+    contact/page.tsx         -> /contact
+  project/
+    [slug]/page.tsx          -> /project/:slug
+```
+
+`(public)` is a route group for organization only. It does not appear in the URL.
 
 ## Deployment
 See `DEPLOYMENT.md` for Vercel deployment steps, optimization notes, and troubleshooting.

@@ -1,4 +1,4 @@
-import { Additional } from '@/components/additional'
+import { Additional } from '@/components/sections/additional'
 
 export default function AdditionalPage() {
   return (

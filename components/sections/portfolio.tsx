@@ -12,41 +12,9 @@ import { TiltCard } from "@/components/tilt-card";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { getImagePath } from "@/lib/utils-image";
+import { projects } from "@/lib/data/projects";
 
 type Tab = "projects" | "techstack" | "certificates";
-
-const projects = [
-  {
-    slug: "hbnb-luxe-airbnb-clone",
-    title: "HBnB - Luxe Airbnb Clone",
-    description:
-      "Portfolio-grade, full-stack Airbnb-style marketplace with Stripe payments, JWT auth, and host/guest flows.",
-    image: "/hbnb.webp",
-    tags: ["React 19", "Flask", "Tailwind CSS", "TiDB", "Stripe", "JWT"],
-    liveDemo: "https://hbnb-luxeairbnbclone.vercel.app/",
-    github: "https://github.com/xl-c111/holbertonschool-hbnb",
-  },
-  {
-    slug: "flora",
-    title: "Flora - Ecommerce Flower Marketplace",
-    description:
-      "Full-stack app with Auth0, Stripe checkout, AI gift messages, subscriptions, and email notifications.",
-    image: "/flora.webp",
-    tags: ["React", "TypeScript", "Express", "Auth0", "Prisma", "Gemini AI"],
-    liveDemo: "https://dzmu16crq41il.cloudfront.net/",
-    github: "https://github.com/xl-c111/Flora",
-  },
-  {
-    slug: "been-there",
-    title: "Been There - AI-Powered Peer Support Platform",
-    description:
-      "An AI platform using semantic matching to counter online radicalization through authentic recovery stories.",
-    image: "/beenthere.webp",
-    tags: ["Next.js 16", "Vercel", "HF Space", "Supabase", "Gemini 2.0"],
-    liveDemo: "https://needleinthehashtaghackathon.vercel.app",
-    github: "https://github.com/xl-c111/NeedleInTheHashtag_Hackathon",
-  },
-];
 
 const certificates = [
   {
@@ -238,7 +206,7 @@ export function Portfolio() {
                       {/* Image */}
                       <Image
                         src={getImagePath(project.image || "/placeholder.svg")}
-                        alt={project.title}
+                        alt={project.cardTitle}
                         fill
                         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-300 will-change-transform"
@@ -248,13 +216,13 @@ export function Portfolio() {
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#43766C] via-[#B19470] to-[#43766C] z-20" />
                     </Link>
                     <CardContent className="pt-6 px-4 sm:px-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground">{project.title}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-foreground">{project.cardTitle}</h3>
                       <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-2">
-                        {project.description}
+                        {project.cardDescription}
                       </p>
 
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.map((tag) => (
+                        {project.cardTags.map((tag) => (
                           <Badge key={tag} variant="outline" className="text-xs sm:text-sm">
                             {tag}
                           </Badge>
@@ -268,7 +236,7 @@ export function Portfolio() {
                           className="w-full sm:flex-1 border-[#43766C]/40 text-[#43766C] hover:bg-[#43766C]/10 hover:text-[#43766C]"
                           asChild
                         >
-                          <a href={project.liveDemo} target="_blank" rel="noopener noreferrer">
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="mr-2 h-3 w-3" />
                             <span className="text-xs sm:text-sm">Live Demo</span>
                           </a>

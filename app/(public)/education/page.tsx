@@ -1,4 +1,4 @@
-import { Education } from '@/components/education'
+import { Education } from '@/components/sections/education'
 
 export default function EducationPage() {
   return (
