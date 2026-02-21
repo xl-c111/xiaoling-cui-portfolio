@@ -56,7 +56,6 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    cursor: auto !important; /* Ensure default cursor is always visible */
     box-sizing: border-box;
   }
 
@@ -66,7 +65,6 @@
   }
   html {
     font-size: 18px;
-    cursor: auto;
     overflow-x: hidden;
     max-width: 100vw;
   }
@@ -84,13 +82,8 @@
       linear-gradient(to bottom, rgba(67, 118, 108, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: auto;
     overflow-x: hidden;
     max-width: 100vw;
-  }
-
-  a, button, input, select, textarea {
-    cursor: pointer !important;
   }
 }
 
@@ -126,9 +119,8 @@
     backface-visibility: hidden;
   }
 
-  /* Optimize image rendering */
-  img {
-    image-rendering: -webkit-optimize-contrast;
+  /* Use only when rendering pixel art/sprites, not photos. */
+  .img-crisp {
     image-rendering: crisp-edges;
   }
 
