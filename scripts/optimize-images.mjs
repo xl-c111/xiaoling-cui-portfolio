@@ -15,7 +15,7 @@ const imagesToOptimize = [
 ];
 
 const pdfsToOptimize = [
-  'understand_cloud_computing.pdf',
+  'understanding_cloud_computing.pdf',
   'working_with_the_openai_api.pdf'
 ];
 

@@ -64,6 +64,7 @@ const projects = {
       "Gemini AI",
       "Docker",
       "GitHub Actions",
+      "AWS",
     ],
     github: "https://github.com/xl-c111/Flora",
     demo: "https://dzmu16crq41il.cloudfront.net/",
