@@ -16,7 +16,19 @@ const projects = {
     longDescription:
       "A production-ready peer support platform designed to combat online radicalization by connecting people to authentic mentor stories from those who have overcome similar challenges. Built with Next.js 16, React 19, and TypeScript, featuring AI semantic matching via sentence-transformers, conversational AI through OpenRouter (Gemini 2.0 Flash), and hybrid serverless architecture. Real human experiences, not AI therapy. Delivered in 48-hour eSafety Hackathon 'Needle in the Hashtag' sprint.",
     image: "/beenthere.webp",
-    technologies: ["Next.js 16", "React 19", "TypeScript", "FastAPI", "Supabase", "PostgreSQL", "OpenRouter API", "Gemini 2.0 Flash", "sentence-transformers", "Tailwind CSS v4", "shadcn/ui"],
+    technologies: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "FastAPI",
+      "Supabase",
+      "PostgreSQL",
+      "OpenRouter API",
+      "Gemini 2.0 Flash",
+      "sentence-transformers",
+      "Tailwind CSS v4",
+      "shadcn/ui",
+    ],
     github: "https://github.com/xl-c111/NeedleInTheHashtag_Hackathon",
     demo: "https://needleinthehashtaghackathon.vercel.app",
     features: [
@@ -38,7 +50,7 @@ const projects = {
     description:
       "Full-stack flower marketplace with React/TypeScript frontend, Express backend, and complete e-commerce functionality.",
     longDescription:
-      "A production-ready flower marketplace built with React, TypeScript, and Express. Features secure checkout with Stripe, Auth0 authentication, AI-powered gift messages via Gemini AI, automated email confirmations, and full Docker containerization with CI/CD deployment.",
+      "A production-ready, cloud-deployed flower marketplace built with React, TypeScript, and Express. Includes secure Stripe checkout with webhook handling, Auth0-based authentication, AI-powered gift message generation via Gemini, automated transactional emails, Dockerized services, CI/CD pipelines with GitHub Actions, and a scalable AWS architecture leveraging EC2, S3 + CloudFront, and managed RDS.",
     image: "/flora.webp",
     technologies: [
       "React",
@@ -62,6 +74,7 @@ const projects = {
       "📧 Automated Emails - Confirmation emails via Nodemailer for order updates",
       "🤖 AI Gift Messages - Gemini AI integration for personalized gift message generation",
       "🐳 Docker Containerization - Containerized frontend, backend, database, and Stripe-CLI services",
+      "☁️ AWS Deployment - Production deployment using EC2, S3, CloudFront, and RDS",
       "🚀 CI/CD Pipeline - GitHub Actions for automated testing and seamless deployment",
     ],
     stats: {
@@ -92,12 +105,12 @@ const projects = {
     github: "https://github.com/xl-c111/holbertonschool-hbnb",
     demo: "https://hbnb-luxeairbnbclone.vercel.app/",
     features: [
-      "🏠 Host dashboard with listings, revenue, and bookings",
-      "📅 Booking flow with availability checks and Stripe verification",
-      "⭐ Reviews and ratings with business rules",
-      "🔐 JWT auth with role-based access for host and guest accounts",
-      "🩺 /health endpoint for uptime checks",
-      "🚀 Production deployment across TiDB Serverless, Fly.io, and Vercel",
+      "🏠 Host and guest workflows with role-based access control and stateful booking management",
+      "📅 Transaction-safe booking flow with backend availability validation and Stripe webhook verification",
+      "⭐ Review system enforcing business rules to prevent duplicate or invalid submissions",
+      "🔐 JWT authentication with secure token validation and authorization middleware",
+      "🩺 /health endpoint for uptime monitoring and deployment readiness checks",
+      "☁️ Cloud deployment across TiDB Serverless (distributed SQL), Fly.io (containerized backend), and Vercel (edge-hosted frontend)",
     ],
     stats: {
       technologies: 11,
@@ -140,19 +153,19 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {project.title}
           </h1>
 
-        {/* Mobile Image - Only visible on mobile */}
-        <div className="lg:hidden mb-6 sm:mb-8">
-          <div className="rounded-xl overflow-hidden border border-[#43766C]/30">
-            <Image
-              src={getImagePath(project.image)}
-              alt={project.title}
-              width={1200}
-              height={800}
-              sizes="(min-width: 1024px) 600px, 100vw"
-              className="w-full h-auto"
-            />
+          {/* Mobile Image - Only visible on mobile */}
+          <div className="lg:hidden mb-6 sm:mb-8">
+            <div className="rounded-xl overflow-hidden border border-[#43766C]/30">
+              <Image
+                src={getImagePath(project.image)}
+                alt={project.title}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 600px, 100vw"
+                className="w-full h-auto"
+              />
+            </div>
           </div>
-        </div>
 
           {/* Main Content - Two Column Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
@@ -262,9 +275,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       <div className="w-10 h-10 rounded-lg bg-[#F8FAE5]/10 flex items-center justify-center">
                         <Star className="h-5 w-5 text-[#F8FAE5]" />
                       </div>
-                      <h2 className="text-2xl font-bold text-[#F8FAE5]">
-                        Key Features
-                      </h2>
+                      <h2 className="text-2xl font-bold text-[#F8FAE5]">Key Features</h2>
                     </div>
                   </div>
 
@@ -282,9 +293,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                           </div>
 
                           {/* Feature text */}
-                          <p className="text-sm leading-relaxed text-[#F8FAE5] font-medium">
-                            {feature}
-                          </p>
+                          <p className="text-sm leading-relaxed text-[#F8FAE5] font-medium">{feature}</p>
                         </div>
                       );
                     })}
