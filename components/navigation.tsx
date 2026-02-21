@@ -323,12 +323,22 @@ export const Navigation = memo(function Navigation() {
           {/* Social Links */}
           <div className="hidden md:flex items-center gap-2">
             <Button variant="ghost" size="icon" className="text-[#7fa99a] hover:text-[#F8FAE5] hover:bg-[#2d4f47]/50" asChild>
-              <a href="https://github.com/xl-c111" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/xl-c111"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Xiaoling Cui GitHub profile"
+              >
                 <Github className="h-5 w-5" />
               </a>
             </Button>
             <Button variant="ghost" size="icon" className="text-[#7fa99a] hover:text-[#F8FAE5] hover:bg-[#2d4f47]/50" asChild>
-              <a href="https://www.linkedin.com/in/xiaolingcui/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.linkedin.com/in/xiaolingcui/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Xiaoling Cui LinkedIn profile"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
             </Button>
@@ -336,6 +346,7 @@ export const Navigation = memo(function Navigation() {
               variant="ghost"
               size="icon"
               className="text-[#7fa99a] hover:text-[#F8FAE5] hover:bg-[#2d4f47]/50"
+              aria-label="Show Xiaoling Cui email options"
               onClick={(e) => {
                 e.preventDefault();
 
@@ -387,6 +398,9 @@ export const Navigation = memo(function Navigation() {
             variant="ghost"
             size="icon"
             className="md:hidden text-[#7fa99a] hover:text-[#F8FAE5] hover:bg-[#2d4f47]/50"
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation-menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -395,7 +409,7 @@ export const Navigation = memo(function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div id="mobile-navigation-menu" className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               {[
                 { id: "hero", label: "Home" },

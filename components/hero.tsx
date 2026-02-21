@@ -102,9 +102,9 @@ export function Hero() {
 
           <div className="flex gap-4">
             {[
-              { icon: Github, href: "https://github.com/xl-c111" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/xiaolingcui/" },
-              { icon: Mail, href: "mailto:xiaolingcui0111@gmail.com" },
+              { icon: Github, href: "https://github.com/xl-c111", label: "Open Xiaoling Cui GitHub profile" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/xiaolingcui/", label: "Open Xiaoling Cui LinkedIn profile" },
+              { icon: Mail, href: "mailto:xiaolingcui0111@gmail.com", label: "Show Xiaoling Cui email options" },
             ].map((social, index) => {
               const Icon = social.icon;
               const isEmail = Icon === Mail;
@@ -159,6 +159,7 @@ export function Hero() {
                       );
                     }}
                     className="w-12 h-12 rounded-lg bg-[#F8FAE5]/10 border border-[#F8FAE5]/30 flex items-center justify-center text-[#F8FAE5] will-change-transform cursor-pointer"
+                    aria-label={social.label}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -185,6 +186,7 @@ export function Hero() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="w-12 h-12 rounded-lg bg-[#F8FAE5]/10 border border-[#F8FAE5]/30 flex items-center justify-center text-[#F8FAE5] will-change-transform"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
