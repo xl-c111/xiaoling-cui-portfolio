@@ -6,7 +6,7 @@ import { Toaster } from 'sonner'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://xiaolingcui.com'),
+  metadataBase: new URL('https://xiaoling-cui-portfolio.vercel.app'),
   title: 'Xiaoling Cui | Software Engineer',
   description: 'Full-stack software engineer specializing in AI integrations, scalable systems, and polished user experiences.',
   generator: 'portfolio',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Xiaoling Cui | Software Engineer',
     description: 'Explore Xiaoling Cui’s portfolio of AI-powered products, full-stack platforms, and DevOps workflows.',
-    url: 'https://xiaolingcui.com',
+    url: 'https://xiaoling-cui-portfolio.vercel.app',
     siteName: 'Xiaoling Cui Portfolio',
     images: [
       {
