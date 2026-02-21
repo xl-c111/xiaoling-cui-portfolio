@@ -1,5 +1,7 @@
 # Xiaoling Cui Portfolio Website
 
+[![CI](https://github.com/xl-c111/xiaoling-cui-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/xl-c111/xiaoling-cui-portfolio/actions/workflows/ci.yml)
+
 Personal portfolio website built with Next.js (App Router), showcasing projects, experience, education, and contact details with a clean, responsive UI.
 
 Live: https://xiaoling-cui-portfolio.vercel.app/
@@ -41,10 +43,21 @@ pnpm dev                  # Start dev server
 pnpm build                # Build for production
 pnpm start                # Start production server
 pnpm lint                 # Lint
-pnpm optimize-images       # Optimize images in public/
+pnpm smoke                # Smoke-test key routes on production server
+pnpm test                 # Alias for smoke tests
+pnpm check                # Lint + build + smoke
+pnpm optimize-images      # Optimize images in public/
 pnpm run preview          # Vercel preview deploy
 pnpm run deploy           # Vercel production deploy
 ```
+
+## Testing and CI
+- Smoke tests are defined in `scripts/smoke-test.mjs`.
+- The smoke suite checks core routes: `/`, `/portfolio`, and `/project/flora`.
+- GitHub Actions workflow is in `.github/workflows/ci.yml` and runs on push to `main` and on pull requests:
+  - `pnpm lint`
+  - `pnpm build`
+  - `pnpm smoke`
 
 ## Project Structure
 - `app/` Next.js routes, layout, globals

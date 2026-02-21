@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "check": "pnpm lint && pnpm build && pnpm smoke",
     "dev": "next dev",
     "lint": "eslint .",
+    "smoke": "node scripts/smoke-test.mjs",
     "start": "next start",
+    "test": "pnpm smoke",
     "optimize-images": "node scripts/optimize-images.mjs",
     "deploy": "vercel --prod",
     "preview": "vercel"
